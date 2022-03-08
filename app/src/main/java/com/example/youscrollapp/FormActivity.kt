@@ -23,7 +23,7 @@ class FormActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.nextBtn.setOnClickListener {
 
-            if(binding.password.editText!!.text.toString().isValidEmail()){
+            if(binding.password.editText!!.text.toString().isValidEmail() && mProfileUri !=null){
             binding.showForm.visibility = View.VISIBLE
             binding.fillForm.visibility = View.INVISIBLE
             binding.backBtn.visibility = View.VISIBLE
@@ -31,13 +31,15 @@ class FormActivity : AppCompatActivity() {
 
             binding.showName.text = binding.name.editText!!.text.toString()
             binding.showEmail.text = binding.password.editText!!.text.toString()
-            if(mProfileUri != null){
+
                 binding.userImageView.setImageURI(mProfileUri)
-            }else{
-                Toast.makeText(this,"Choose Image",Toast.LENGTH_LONG).show()
-            }
+
             binding.addimageTv.visibility = View.INVISIBLE}
-            else{
+            else if(mProfileUri ==null){
+                Toast.makeText(this,"Choose Image",Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+            else if (!binding.password.editText!!.text.toString().isValidEmail()){
                 binding.password.editText!!.error = "Error"
                 return@setOnClickListener
             }

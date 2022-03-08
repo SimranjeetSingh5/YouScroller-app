@@ -58,8 +58,8 @@
                 android:layout_height="wrap_content"
                 app:endIconMode="clear_text"
                 android:hint="Name"
-                android:layout_marginTop="280dp"
-                app:layout_constraintBottom_toTopOf="@id/password"
+                android:gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/action_bar">
